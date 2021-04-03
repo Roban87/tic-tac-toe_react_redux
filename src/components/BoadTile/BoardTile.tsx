@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import PropTypes from 'prop-types';
 
 interface Props {
-  sign: string;
+  value: string;
   id: string;
+  onClickHandler: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
 const style: React.CSSProperties = {
@@ -11,19 +12,27 @@ const style: React.CSSProperties = {
   height: '30px',
   margin: '5px',
   backgroundColor: 'blue',
+  color: 'white',
 };
 
-const PlayerInfo: React.FC<Props> = ({ sign, id }) => {
+const PlayerInfo: React.FC<Props> = ({ value, id, onClickHandler }) => {
   return (
-    <div style={style} id={id}>
-      {sign}
-    </div>
+    <button
+      style={style}
+      type="button"
+      onClick={onClickHandler}
+      id={id}
+      disabled={!!value}
+    >
+      {value}
+    </button>
   );
 };
 
 PlayerInfo.propTypes = {
-  sign: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  onClickHandler: PropTypes.func.isRequired,
 };
 
 export default PlayerInfo;

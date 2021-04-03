@@ -14,8 +14,9 @@ interface GameState {
   playerO: Player;
   gameSize: number;
   active: boolean;
-  board: string[][];
+  board: { id: string; value: string }[][];
   currentPlayer: string;
+  error: string;
 }
 
 const initialState: GameState = {
@@ -31,6 +32,7 @@ const initialState: GameState = {
   active: false,
   board: [],
   currentPlayer: 'playerX',
+  error: '',
 };
 
 export const gameSlice = createSlice({
@@ -51,10 +53,23 @@ export const gameSlice = createSlice({
       state.gameSize = action.payload.gameSize;
       state.active = true;
       state.currentPlayer = chooseStarterPlayer(['playerX', 'playerO']);
+      state.error = '';
     },
-    // setTile: (state, action: PayloadAction<>) => {},
+    setError: (state, action: PayloadAction<{ error: string }>) => {
+      state.error = action.payload.error;
+    },
+    setGame: (
+      state,
+      action: PayloadAction<{
+        nextPlayer: string;
+        board: { id: string; value: string }[][];
+      }>
+    ) => {
+      state.currentPlayer = action.payload.nextPlayer;
+      state.board = action.payload.board;
+    },
   },
 });
 
-export const { startGame } = gameSlice.actions;
+export const { startGame, setError, setGame } = gameSlice.actions;
 export default gameSlice.reducer;

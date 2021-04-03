@@ -5,7 +5,7 @@ import PlayerInput from '../components/PlayerInput/PlayerInput';
 import RadioField from '../components/RadioField/RadioField';
 import Button from '../components/Button/Button';
 import { useAppSelector, useAppDispatch } from '../redux/hooks';
-import { startGame } from '../redux/Slices/gameSlice';
+import { startGame, setError } from '../redux/Slices/gameSlice';
 import animateText from '../utilities/animateText';
 
 // put into final style
@@ -38,6 +38,8 @@ const Landing: React.FC = () => {
   const gameSize = useAppSelector(state => state.game.gameSize);
   const prevPlayerX = useAppSelector(state => state.game.playerX.name);
   const prevPlayerO = useAppSelector(state => state.game.playerO.name);
+  const error = useAppSelector(state => state.game.error);
+
   const [size, setSize] = useState<number>(gameSize || 3);
   const [playerX, setPlayerX] = useState<string>(prevPlayerX || '');
   const [playerO, setPlayerO] = useState<string>(prevPlayerO || '');
@@ -46,12 +48,11 @@ const Landing: React.FC = () => {
       ? playerX
       : playerO;
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+
   const dispatch = useAppDispatch();
   const history = useHistory();
 
-  const onSizeChangeHandler = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ): void => {
+  const SizeChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSize(Number(e.target.value));
   };
 
@@ -85,6 +86,10 @@ const Landing: React.FC = () => {
   };
 
   const startGameHandler = (): void => {
+    if (playerX === '' || playerO === '') {
+      dispatch(setError({ error: 'Player name must be filled!' }));
+      return;
+    }
     dispatch(startGame({ playerX, playerO, gameSize: size }));
     openModal();
     setTimeout(() => {
@@ -119,8 +124,9 @@ const Landing: React.FC = () => {
         <RadioField
           sizes={gameSizes}
           choosenSize={size}
-          onChangeHandler={onSizeChangeHandler}
+          onChangeHandler={SizeChangeHandler}
         />
+        <p>{error}</p>
         <Button
           type="button"
           buttonText="Start Game"
