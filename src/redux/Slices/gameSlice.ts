@@ -1,5 +1,4 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import generateGameBoard from '../../utilities/generateGameBoard';
 import chooseStarterPlayer from '../../utilities/chooseStarterPlayer';
@@ -17,6 +16,7 @@ interface GameState {
   active: boolean;
   board: { id: string; value: string }[][];
   currentPlayer: string;
+  winningCondition: number;
   error: string;
 }
 
@@ -33,6 +33,7 @@ const initialState: GameState = {
   active: false,
   board: [],
   currentPlayer: '',
+  winningCondition: 0,
   error: '',
 };
 
@@ -58,6 +59,7 @@ export const gameSlice = createSlice({
       state.gameSize = payload.gameSize;
       state.active = true;
       state.currentPlayer = chooseStarterPlayer(['playerX', 'playerO']);
+      state.winningCondition = payload.gameSize > 3 ? 4 : 3;
       state.error = '';
     },
     setError: (state, action: PayloadAction<{ error: string }>) => {
@@ -68,20 +70,29 @@ export const gameSlice = createSlice({
       {
         payload,
       }: PayloadAction<{
-        nextPlayer: string;
         id: string;
         value: string;
         stepsX: number;
         stepsO: number;
       }>
     ) => {
-      state.currentPlayer = payload.nextPlayer;
       state.board = setBoard(state.board, payload.id, payload.value);
       state.playerX.steps = payload.stepsX;
       state.playerO.steps = payload.stepsO;
     },
+    setNextPlayer: (
+      state,
+      { payload }: PayloadAction<{ nextPlayer: string }>
+    ) => {
+      state.currentPlayer = payload.nextPlayer;
+    },
   },
 });
 
-export const { startGame, setError, setGame } = gameSlice.actions;
+export const {
+  startGame,
+  setError,
+  setGame,
+  setNextPlayer,
+} = gameSlice.actions;
 export default gameSlice.reducer;

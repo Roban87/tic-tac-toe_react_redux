@@ -2,7 +2,8 @@ import React, { MouseEvent } from 'react';
 import PlayerInfo from '../components/PlayerInfo/PlayerInfo';
 import { useAppSelector, useAppDispatch } from '../redux/hooks';
 import BoardTile from '../components/BoadTile/BoardTile';
-import { setGame } from '../redux/Slices/gameSlice';
+import { setGame, setNextPlayer } from '../redux/Slices/gameSlice';
+import checkGameStatus from '../utilities/checkGameStatus';
 
 const style: React.CSSProperties = {
   display: 'flex',
@@ -14,6 +15,7 @@ const Game: React.FC = () => {
   const playerXSteps = useAppSelector(state => state.game.playerX.steps);
   const playerOSteps = useAppSelector(state => state.game.playerO.steps);
   const currentPlayer = useAppSelector(state => state.game.currentPlayer);
+  const winnigCondition = useAppSelector(state => state.game.winningCondition);
   const board = useAppSelector(state => state.game.board);
   const dispatch = useAppDispatch();
 
@@ -25,15 +27,29 @@ const Game: React.FC = () => {
       currentPlayer === 'playerX' ? playerXSteps + 1 : playerXSteps;
     const stepsO =
       currentPlayer === 'playerO' ? playerOSteps + 1 : playerOSteps;
+
     dispatch(
       setGame({
-        nextPlayer,
         id: button.id,
         value: currentSign,
         stepsX,
         stepsO,
       })
     );
+
+    if (playerXSteps + playerOSteps > winnigCondition * 2 - 3) {
+      for (let i = 0; i < board.length; i += 1) {
+        for (let j = 0; j < board[i].length; j += 1) {
+          if (button.id === board[i][j].id) {
+            console.log(
+              checkGameStatus(board, i, j, currentSign, winnigCondition)
+            );
+          }
+        }
+      }
+    }
+
+    dispatch(setNextPlayer({ nextPlayer }));
   };
 
   return (
