@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState } from 'react';
+import React, { MouseEvent } from 'react';
 import PlayerInfo from '../components/PlayerInfo/PlayerInfo';
 import { useAppSelector, useAppDispatch } from '../redux/hooks';
 import BoardTile from '../components/BoadTile/BoardTile';
@@ -14,27 +14,26 @@ const Game: React.FC = () => {
   const playerXSteps = useAppSelector(state => state.game.playerX.steps);
   const playerOSteps = useAppSelector(state => state.game.playerO.steps);
   const currentPlayer = useAppSelector(state => state.game.currentPlayer);
-  const [board, setBoard] = useState<{ id: string; value: string }[][]>(
-    useAppSelector(state => state.game.board)
-  );
+  const board = useAppSelector(state => state.game.board);
   const dispatch = useAppDispatch();
-
-  const refreshBoard = (id: string, val: string): void => {
-    setBoard(
-      board.map((row): { id: string; value: string }[] => {
-        return row.map((cell): { id: string; value: string } => {
-          return cell.id === id ? { ...cell, value: val } : cell;
-        });
-      })
-    );
-  };
 
   const onTileClickHandler = (e: MouseEvent<HTMLButtonElement>): void => {
     const button = e.currentTarget;
     const currentSign = currentPlayer === 'playerX' ? 'X' : 'O';
-    refreshBoard(button.id, currentSign);
     const nextPlayer = currentPlayer === 'playerX' ? 'playerO' : 'playerX';
-    dispatch(setGame({ nextPlayer, board }));
+    const stepsX =
+      currentPlayer === 'playerX' ? playerXSteps + 1 : playerXSteps;
+    const stepsO =
+      currentPlayer === 'playerO' ? playerOSteps + 1 : playerOSteps;
+    dispatch(
+      setGame({
+        nextPlayer,
+        id: button.id,
+        value: currentSign,
+        stepsX,
+        stepsO,
+      })
+    );
   };
 
   return (

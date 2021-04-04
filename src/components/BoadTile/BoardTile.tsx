@@ -20,7 +20,7 @@ const PlayerInfo: React.FC<Props> = ({ value, id, onClickHandler }) => {
     <button
       style={style}
       type="button"
-      onClick={onClickHandler}
+      onClick={e => onClickHandler(e)}
       id={id}
       disabled={!!value}
     >

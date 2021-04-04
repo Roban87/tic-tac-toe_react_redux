@@ -3,6 +3,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import generateGameBoard from '../../utilities/generateGameBoard';
 import chooseStarterPlayer from '../../utilities/chooseStarterPlayer';
+import setBoard from '../../utilities/setBoard';
 
 interface Player {
   name: string;
@@ -31,7 +32,7 @@ const initialState: GameState = {
   gameSize: 0,
   active: false,
   board: [],
-  currentPlayer: 'playerX',
+  currentPlayer: '',
   error: '',
 };
 
@@ -41,16 +42,20 @@ export const gameSlice = createSlice({
   reducers: {
     startGame: (
       state,
-      action: PayloadAction<{
+      {
+        payload,
+      }: PayloadAction<{
         playerX: string;
         playerO: string;
         gameSize: number;
       }>
     ) => {
-      state.board = generateGameBoard(action.payload.gameSize);
-      state.playerX.name = action.payload.playerX;
-      state.playerO.name = action.payload.playerO;
-      state.gameSize = action.payload.gameSize;
+      state.board = generateGameBoard(payload.gameSize);
+      state.playerX.name = payload.playerX;
+      state.playerO.name = payload.playerO;
+      state.playerX.steps = 0;
+      state.playerO.steps = 0;
+      state.gameSize = payload.gameSize;
       state.active = true;
       state.currentPlayer = chooseStarterPlayer(['playerX', 'playerO']);
       state.error = '';
@@ -60,13 +65,20 @@ export const gameSlice = createSlice({
     },
     setGame: (
       state,
-      action: PayloadAction<{
+      {
+        payload,
+      }: PayloadAction<{
         nextPlayer: string;
-        board: { id: string; value: string }[][];
+        id: string;
+        value: string;
+        stepsX: number;
+        stepsO: number;
       }>
     ) => {
-      state.currentPlayer = action.payload.nextPlayer;
-      state.board = action.payload.board;
+      state.currentPlayer = payload.nextPlayer;
+      state.board = setBoard(state.board, payload.id, payload.value);
+      state.playerX.steps = payload.stepsX;
+      state.playerO.steps = payload.stepsO;
     },
   },
 });
