@@ -85,7 +85,7 @@ const Landing: React.FC = () => {
           {currentPlayer === 'playerX' ? playerX : playerO}
         </h2>
       </Modal>
-      <h1>Awsome Tic-Tac-Toe</h1>
+      <h1>Awesome Tic-Tac-Toe</h1>
       <form>
         <section className="player-input-section">
           <PlayerInput

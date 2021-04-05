@@ -1,0 +1,11 @@
+main {
+  display: flex;
+  flex-direction: column;
+}
+main table {
+  width: 45%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*# sourceMappingURL=ScoreBoard.css.map */

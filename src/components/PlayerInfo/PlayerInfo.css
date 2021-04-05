@@ -1,3 +1,17 @@
+.player-info {
+  text-align: center;
+  width: 30%;
+  border-radius: 50px;
+  padding: 10px 0;
+}
+.player-info h2 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
 
+.current-player {
+  background-color: #ecac34;
+  color: black;
+}
 
 /*# sourceMappingURL=PlayerInfo.css.map */

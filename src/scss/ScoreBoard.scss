@@ -1,0 +1,12 @@
+@use 'config';
+
+main {
+  display: flex;
+  flex-direction: column;
+
+  table {
+    width: 45%;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+}

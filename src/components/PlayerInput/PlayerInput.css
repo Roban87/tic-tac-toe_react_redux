@@ -3,14 +3,14 @@ label.text-input {
   flex-direction: column;
   width: 40%;
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 2rem;
 }
 label.text-input input[type=text] {
-  height: 2rem;
+  height: 2.5rem;
   padding: 0 10px;
-  font-size: 1rem;
+  font-size: 1.3rem;
   text-align: center;
   color: #666;
 }

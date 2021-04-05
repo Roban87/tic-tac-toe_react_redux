@@ -1,0 +1,13 @@
+tr td {
+  padding: 5px 10px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+tr:first-of-type {
+  font-weight: 700;
+}
+tr:nth-of-type(even) {
+  background-color: #eee;
+}
+
+/*# sourceMappingURL=TableRow.css.map */

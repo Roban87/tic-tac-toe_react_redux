@@ -2,18 +2,14 @@
 @use 'modal';
 
 main {
-  background-color: #fff;
-  margin: 10vh auto 0;
-  width: 80%;
-  max-width: 1440px;
-  color: config.$text-color;
 
   h1 {
     text-align: center;
-    font-family: 'PottaOne', 'OpenSans', sans-serif;
+    font-family: 'Potta One', 'OpenSans', sans-serif;
     font-size: 2.5rem;
     padding-top: 5vh;
     margin-bottom: 5vh;
+    letter-spacing: 1px;;
 
     @include config.mobile {
       font-size: 1.7rem;

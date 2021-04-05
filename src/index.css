@@ -1,31 +1,6 @@
-@font-face {
-  font-family: 'OpenSans';
-  font-style: normal;
-  font-weight: 400;
-  src: local('OpenSans') url('./fonts/Open_Sans/OpenSans-Regular.ttf') format('ttf');
-}
-@font-face {
-  font-family: 'OpenSans';
-  font-style: normal;
-  font-weight: 700;
-  src: local('OpenSans') url('./fonts/Open_Sans/OpenSans-Bold.ttf') format('ttf');
-}
-@font-face {
-  font-family: 'OpenSans';
-  font-style: normal;
-  font-weight: 300;
-  src: local('OpenSans') url('./fonts/Open_Sans/OpenSans-Light.ttf') format('ttf');
-}
-@font-face {
-  font-family: 'PottaOne';
-  font-style: normal;
-  font-weight: 400;
-  src: local('PottaOne') url('./fonts/Potta_One/PottaOne-Regular.ttf') format('ttf');
-}
-
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;

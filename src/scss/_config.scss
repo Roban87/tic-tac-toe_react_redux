@@ -3,6 +3,7 @@ $btn-color_hover: #ecac34;
 $x-color: #A84132;
 $o-color: #6593A6;
 $text-color: #666;
+$sizes: 3, 4, 5, 6, 7, 8, 9;
 
 @mixin mobile {
   @media (max-width: 576px) {

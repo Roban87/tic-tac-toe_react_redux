@@ -2,9 +2,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'OpenSans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
   background-color: #F2F2F2;
+}
+
+main {
+  background-color: #fff;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 1440px;
+  color: #666;
 }

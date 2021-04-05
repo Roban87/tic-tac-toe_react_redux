@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './TableHeader.css';
 
 interface Props {
   scoreType: string;
@@ -10,7 +11,7 @@ const TableHeader: React.FC<Props> = ({ scoreType }) => {
     <thead>
       <th>Rank</th>
       <th>Name</th>
-      <th>{`Number of ${scoreType}`}</th>
+      <th>{`No#${scoreType}`}</th>
     </thead>
   );
 };

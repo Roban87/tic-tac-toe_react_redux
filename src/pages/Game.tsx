@@ -7,29 +7,7 @@ import BoardTile from '../components/BoadTile/BoardTile';
 import { setGame, setNextPlayer, setGameEnd } from '../redux/Slices/gameSlice';
 import checkGameStatus from '../utilities/checkGameStatus';
 import animateText from '../utilities/animateText';
-
-const style: React.CSSProperties = {
-  display: 'flex',
-};
-
-const modalStyle: Modal.Styles = {
-  content: {
-    width: '50vw',
-    height: '120px',
-    backgroundColor: 'grey',
-    textAlign: 'center',
-    border: 'none',
-    top: '30%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-  overlay: {
-    background: 'none',
-  },
-};
+import './styles/Game.css';
 
 Modal.setAppElement('#root');
 
@@ -115,6 +93,7 @@ const Game: React.FC = () => {
     }
     if (stepsX + stepsO === gameSize ** 2) {
       openModal();
+      // TODO text for modal!!!
       setGameEnd([
         {
           name: playerX,
@@ -134,11 +113,12 @@ const Game: React.FC = () => {
   };
 
   return (
-    <>
+    <main>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
-        style={modalStyle}
+        className="modal"
+        overlayClassName="overlay"
         contentLabel="Starting Player"
       >
         <p>The WINNER is</p>
@@ -147,15 +127,26 @@ const Game: React.FC = () => {
         </h2>
       </Modal>
       <section>
-        <PlayerInfo sign="X" playerName={playerX} steps={playerXSteps} />
-        <PlayerInfo sign="O" playerName={playerO} steps={playerOSteps} />
+        <PlayerInfo
+          sign="X"
+          playerName={playerX}
+          steps={playerXSteps}
+          active={currentPlayer === 'playerX' ? 'current-player' : ''}
+        />
+        <PlayerInfo
+          sign="O"
+          playerName={playerO}
+          steps={playerOSteps}
+          active={currentPlayer === 'playerO' ? 'current-player' : ''}
+        />
       </section>
       <section className="game-board">
         {board.map(row => (
-          <div className="row" style={style}>
+          <div className="row">
             {row.map(tile => {
               return (
                 <BoardTile
+                  size={gameSize}
                   id={tile.id}
                   key={tile.id}
                   value={tile.value}
@@ -166,7 +157,7 @@ const Game: React.FC = () => {
           </div>
         ))}
       </section>
-    </>
+    </main>
   );
 };
 

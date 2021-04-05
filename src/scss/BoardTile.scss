@@ -1,0 +1,29 @@
+@use 'config';
+@each $size in config.$sizes {
+  .tile-sizes-#{$size} {
+    width: calc(40vw/#{$size});
+    height: calc(40vw/#{$size});
+    font-size: calc(40vw/#{$size} * .8);
+  }
+} 
+
+.game-btn {
+  background-color: #F2F2F2;
+  border: 1px solid #cfcfcf;
+  text-align: center;
+  line-height: 100%;
+  font-family: 'Potta One', 'OpenSans', sans-serif;
+
+  &:hover, &:active {
+    background-color: #F2F2F2;
+    outline: none;
+  }
+}
+
+.x-color {
+  color: config.$x-color;
+}
+
+.o-color {
+  color: config.$o-color;
+}

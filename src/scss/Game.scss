@@ -1,0 +1,25 @@
+@use 'config';
+@use 'modal';
+
+main {
+
+  & > section:first-of-type {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 50px 0;
+  }
+
+  .game-board {
+    min-width: 300px;
+    width: 80vw;
+    margin: 0 auto;
+    padding-bottom: 30px;
+
+    .row {
+      display: flex;
+      width: fit-content;
+      margin: 0 auto;
+    }
+  }
+ 
+}

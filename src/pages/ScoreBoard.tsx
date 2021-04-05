@@ -5,6 +5,7 @@ import TableRow from '../components/TableRow/TableRow';
 import Button from '../components/Button/Button';
 import { useAppSelector } from '../redux/hooks';
 import aggregateScores from '../utilities/aggregateScores';
+import './styles/ScoreBoard.css';
 
 const ScoreBoard: React.FC = () => {
   const scores = useAppSelector(state => state.game.scores);
@@ -13,34 +14,40 @@ const ScoreBoard: React.FC = () => {
 
   return (
     <main>
-      <table className="score-board">
-        <TableHeader scoreType="Wins" />
-        <tbody>
-          {agregatedScores
-            .sort((a, b) => (a.wins < b.wins ? 1 : -1))
-            .map((item, index) => {
-              return (
-                <TableRow name={item.name} rank={index + 1} score={item.wins} />
-              );
-            })}
-        </tbody>
-      </table>
-      <table className="score-board">
-        <TableHeader scoreType="Steps" />
-        <tbody>
-          {agregatedScores
-            .sort((a, b) => (a.steps > b.steps ? 1 : -1))
-            .map((item, index) => {
-              return (
-                <TableRow
-                  name={item.name}
-                  rank={index + 1}
-                  score={item.steps}
-                />
-              );
-            })}
-        </tbody>
-      </table>
+      <section>
+        <table className="score-board">
+          <TableHeader scoreType="Wins" />
+          <tbody>
+            {agregatedScores
+              .sort((a, b) => (a.wins < b.wins ? 1 : -1))
+              .map((item, index) => {
+                return (
+                  <TableRow
+                    name={item.name}
+                    rank={index + 1}
+                    score={item.wins}
+                  />
+                );
+              })}
+          </tbody>
+        </table>
+        <table className="score-board">
+          <TableHeader scoreType="Steps" />
+          <tbody>
+            {agregatedScores
+              .sort((a, b) => (a.steps > b.steps ? 1 : -1))
+              .map((item, index) => {
+                return (
+                  <TableRow
+                    name={item.name}
+                    rank={index + 1}
+                    score={item.steps}
+                  />
+                );
+              })}
+          </tbody>
+        </table>
+      </section>
       <Button
         type="button"
         buttonText="back to Starting Page"

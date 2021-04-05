@@ -1,0 +1,10 @@
+@use 'config';
+
+thead {
+  th {
+    padding: 5px 10px;
+    font-size: 1.2rem;
+  }
+
+  background-color: config.$btn-color_hover;
+}
