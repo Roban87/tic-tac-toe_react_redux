@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Button.css';
 
 interface Props {
   type: string;
@@ -9,7 +10,12 @@ interface Props {
 
 const Button: React.FC<Props> = ({ type, buttonText, onClickHandler }) => {
   return (
-    <button aria-label={type} type="button" onClick={onClickHandler}>
+    <button
+      aria-label={type}
+      type="button"
+      onClick={onClickHandler}
+      className="control-btn"
+    >
       {buttonText}
     </button>
   );

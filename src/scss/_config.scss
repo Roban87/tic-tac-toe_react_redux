@@ -1,0 +1,11 @@
+$btn-color: #F2C063;
+$btn-color_hover: #ecac34;
+$x-color: #A84132;
+$o-color: #6593A6;
+$text-color: #666;
+
+@mixin mobile {
+  @media (max-width: 576px) {
+    @content;
+  }
+}

@@ -7,30 +7,9 @@ import Button from '../components/Button/Button';
 import { useAppSelector, useAppDispatch } from '../redux/hooks';
 import { startGame, setError } from '../redux/Slices/gameSlice';
 import animateText from '../utilities/animateText';
-
-// put into final style
-import './modal.css';
+import './styles/Landing.css';
 
 const gameSizes = [3, 4, 5, 6, 7, 8, 9];
-
-const modalStyle: Modal.Styles = {
-  content: {
-    width: '50vw',
-    height: '120px',
-    backgroundColor: 'grey',
-    textAlign: 'center',
-    border: 'none',
-    top: '30%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-  overlay: {
-    background: 'none',
-  },
-};
 
 Modal.setAppElement('#root');
 
@@ -93,11 +72,12 @@ const Landing: React.FC = () => {
   };
 
   return (
-    <>
+    <main>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
-        style={modalStyle}
+        className="modal"
+        overlayClassName="overlay"
         contentLabel="Starting Player"
       >
         <p>Starting Player</p>
@@ -105,32 +85,35 @@ const Landing: React.FC = () => {
           {currentPlayer === 'playerX' ? playerX : playerO}
         </h2>
       </Modal>
+      <h1>Awsome Tic-Tac-Toe</h1>
       <form>
-        <PlayerInput
-          id="playerX"
-          label="PlayerX"
-          value={playerX}
-          onNameChange={nameChangeHandler}
-        />
-        <PlayerInput
-          id="playerO"
-          label="PlayerO"
-          value={playerO}
-          onNameChange={nameChangeHandler}
-        />
+        <section className="player-input-section">
+          <PlayerInput
+            id="playerX"
+            label="PlayerX"
+            value={playerX}
+            onNameChange={nameChangeHandler}
+          />
+          <PlayerInput
+            id="playerO"
+            label="PlayerO"
+            value={playerO}
+            onNameChange={nameChangeHandler}
+          />
+        </section>
         <RadioField
           sizes={gameSizes}
           choosenSize={size}
           onChangeHandler={SizeChangeHandler}
         />
-        <p>{error}</p>
+        <p className="error-message">{error}</p>
         <Button
           type="button"
           buttonText="Start Game"
           onClickHandler={startGameHandler}
         />
       </form>
-    </>
+    </main>
   );
 };
 

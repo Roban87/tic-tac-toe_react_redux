@@ -1,0 +1,46 @@
+@use 'config';
+@use 'modal';
+
+main {
+  background-color: #fff;
+  margin: 10vh auto 0;
+  width: 80%;
+  max-width: 1440px;
+  color: config.$text-color;
+
+  h1 {
+    text-align: center;
+    font-family: 'PottaOne', 'OpenSans', sans-serif;
+    font-size: 2.5rem;
+    padding-top: 5vh;
+    margin-bottom: 5vh;
+
+    @include config.mobile {
+      font-size: 1.7rem;
+    }
+  }
+
+  .player-input-section {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .error-message {
+    text-align: center;
+    color: config.$x-color;
+    font-size: 1.2rem;
+  }
+}
+
+.modal {
+  @include modal.Modal;
+}
+
+.overlay {
+  @include modal.Overlay;
+}

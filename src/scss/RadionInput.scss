@@ -1,0 +1,14 @@
+@use 'config';
+
+label.radio-input {
+  font-size: 1.1rem;
+  display: flex;
+  min-width: 50px;
+  flex-direction: column-reverse;
+  align-items: center;
+  margin-bottom: 5vh;
+
+  input[type="radio"] {
+    margin-bottom: 8px;
+  }
+}

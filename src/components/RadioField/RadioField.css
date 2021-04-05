@@ -1,0 +1,17 @@
+fieldset {
+  width: 90%;
+  margin: 0 auto;
+  padding: 30px 15px 10px;
+  font-weight: 700;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 1.5rem;
+}
+@media (max-width: 576px) {
+  fieldset {
+    flex-wrap: wrap;
+  }
+}
+
+/*# sourceMappingURL=RadioField.css.map */

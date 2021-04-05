@@ -1,0 +1,22 @@
+button.control-btn {
+  margin: 20px auto;
+  padding: 10px 15px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  border: none;
+  color: #666;
+  background-color: #F2C063;
+}
+button.control-btn:hover {
+  background-color: #ecac34;
+}
+button.control-btn:active {
+  background-color: #F2C063;
+}
+button.control-btn:focus {
+  outline: none;
+}
+
+/*# sourceMappingURL=Button.css.map */

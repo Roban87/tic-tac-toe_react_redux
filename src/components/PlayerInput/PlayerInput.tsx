@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './PlayerInput.css';
 
 interface Props {
   id: string;
@@ -10,12 +11,12 @@ interface Props {
 
 const PlayerInput: React.FC<Props> = ({ id, label, value, onNameChange }) => {
   return (
-    <label htmlFor={id}>
+    <label htmlFor={id} className="text-input">
       {label}
       <input
         type="text"
         id={id}
-        placeholder={`${label} name`}
+        placeholder="Name"
         name={id}
         value={value}
         onChange={onNameChange}

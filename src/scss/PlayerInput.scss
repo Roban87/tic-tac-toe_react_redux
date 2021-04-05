@@ -1,0 +1,23 @@
+@use 'config';
+
+label.text-input {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+
+  input[type='text'] {
+    height: 2rem;
+    padding: 0 10px;
+    font-size: 1rem;
+    text-align: center;
+    color: config.$text-color;
+
+    &:focus {
+      outline-color: config.$btn-color;
+    }
+  }
+}

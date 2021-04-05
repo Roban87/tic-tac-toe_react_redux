@@ -1,0 +1,66 @@
+main {
+  background-color: #fff;
+  margin: 10vh auto 0;
+  width: 80%;
+  max-width: 1440px;
+  color: #666;
+}
+main h1 {
+  text-align: center;
+  font-family: "PottaOne", "OpenSans", sans-serif;
+  font-size: 2.5rem;
+  padding-top: 5vh;
+  margin-bottom: 5vh;
+}
+@media (max-width: 576px) {
+  main h1 {
+    font-size: 1.7rem;
+  }
+}
+main .player-input-section {
+  display: flex;
+  justify-content: space-evenly;
+}
+main form {
+  display: flex;
+  flex-direction: column;
+}
+main .error-message {
+  text-align: center;
+  color: #A84132;
+  font-size: 1.2rem;
+}
+
+.modal {
+  width: 100vw;
+  height: 120px;
+  background-color: #6592a6de;
+  text-align: center;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 22%;
+  margin-right: -50px auto 0;
+}
+.modal p {
+  font-size: 1.2rem;
+  line-height: 3rem;
+}
+.modal .animate-text span {
+  font-size: 3rem;
+  line-height: 3rem;
+  display: inline-block;
+  opacity: 0;
+  transition: all 0.4s ease-in;
+  transform: translateY(-20px);
+}
+.modal .animate-text span.fade {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.overlay {
+  background: none;
+}
+
+/*# sourceMappingURL=Landing.css.map */

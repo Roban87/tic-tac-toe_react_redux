@@ -6,6 +6,10 @@ import { PersistGate } from 'redux-persist/integration/react';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { store, persistor } from './redux/store';
+import './fonts/Potta_One/PottaOne-Regular.ttf';
+import './fonts/Open_Sans/OpenSans-Regular.ttf';
+import './fonts/Open_Sans/OpenSans-Bold.ttf';
+import './fonts/Open_Sans/OpenSans-Light.ttf';
 
 ReactDOM.render(
   <React.StrictMode>

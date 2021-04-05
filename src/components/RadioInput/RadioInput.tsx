@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './RadioInput.css';
 
 interface Props {
   value: number;
@@ -10,7 +11,7 @@ interface Props {
 
 const RadioInput: React.FC<Props> = ({ value, label, checked, onChange }) => {
   return (
-    <label htmlFor={label}>
+    <label htmlFor={label} className="radio-input">
       {`${value}X${value}`}
       <input
         type="radio"

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RadioInput from '../RadioInput/RadioInput';
+import './RadioField.css';
 
 interface Props {
   sizes: number[];

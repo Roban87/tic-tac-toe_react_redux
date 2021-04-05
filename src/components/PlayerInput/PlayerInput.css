@@ -1,0 +1,21 @@
+label.text-input {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+label.text-input input[type=text] {
+  height: 2rem;
+  padding: 0 10px;
+  font-size: 1rem;
+  text-align: center;
+  color: #666;
+}
+label.text-input input[type=text]:focus {
+  outline-color: #F2C063;
+}
+
+/*# sourceMappingURL=PlayerInput.css.map */
