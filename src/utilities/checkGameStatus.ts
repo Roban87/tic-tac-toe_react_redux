@@ -64,7 +64,7 @@ const checkGameStatus = (
       j += 1;
     }
   }
-
+  // not working properly; doesn't go to minus direction
   // check for reverse-diagonal
   const valuesMinRD: number[] = [winningCondition - 1, x, board.length - y - 1];
   const valuesMaxRD: number[] = [winningCondition - 1, board.length - x - 1, y];

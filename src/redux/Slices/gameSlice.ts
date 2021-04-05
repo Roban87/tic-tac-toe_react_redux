@@ -4,9 +4,10 @@ import generateGameBoard from '../../utilities/generateGameBoard';
 import chooseStarterPlayer from '../../utilities/chooseStarterPlayer';
 import setBoard from '../../utilities/setBoard';
 
-interface Player {
+export interface Player {
   name: string;
   steps: number;
+  wins: number;
 }
 
 interface GameState {
@@ -17,6 +18,7 @@ interface GameState {
   board: { id: string; value: string }[][];
   currentPlayer: string;
   winningCondition: number;
+  scores: Player[];
   error: string;
 }
 
@@ -24,16 +26,19 @@ const initialState: GameState = {
   playerX: {
     name: '',
     steps: 0,
+    wins: 0,
   },
   playerO: {
     name: '',
     steps: 0,
+    wins: 0,
   },
   gameSize: 0,
   active: false,
   board: [],
   currentPlayer: '',
   winningCondition: 0,
+  scores: [],
   error: '',
 };
 
@@ -86,6 +91,10 @@ export const gameSlice = createSlice({
     ) => {
       state.currentPlayer = payload.nextPlayer;
     },
+    setGameEnd: (state, { payload }: PayloadAction<Player[]>) => {
+      state.active = false;
+      state.scores = state.scores.concat(payload);
+    },
   },
 });
 
@@ -94,5 +103,6 @@ export const {
   setError,
   setGame,
   setNextPlayer,
+  setGameEnd,
 } = gameSlice.actions;
 export default gameSlice.reducer;

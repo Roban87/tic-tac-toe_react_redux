@@ -39,16 +39,13 @@ const Landing: React.FC = () => {
   const prevPlayerX = useAppSelector(state => state.game.playerX.name);
   const prevPlayerO = useAppSelector(state => state.game.playerO.name);
   const error = useAppSelector(state => state.game.error);
+  const currentPlayer = useAppSelector(state => state.game.currentPlayer);
 
   const [size, setSize] = useState<number>(gameSize || 3);
   const [playerX, setPlayerX] = useState<string>(prevPlayerX || '');
   const [playerO, setPlayerO] = useState<string>(prevPlayerO || '');
-  const currentPlayer =
-    useAppSelector(state => state.game.currentPlayer) === 'playerX'
-      ? playerX
-      : playerO;
-  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
 
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const history = useHistory();
 
@@ -82,6 +79,7 @@ const Landing: React.FC = () => {
 
     setTimeout(() => {
       closeModal();
+      history.push('./game');
     }, 3000);
   };
 
@@ -92,9 +90,6 @@ const Landing: React.FC = () => {
     }
     dispatch(startGame({ playerX, playerO, gameSize: size }));
     openModal();
-    setTimeout(() => {
-      history.push('./game');
-    }, 3000);
   };
 
   return (
@@ -105,8 +100,10 @@ const Landing: React.FC = () => {
         style={modalStyle}
         contentLabel="Starting Player"
       >
-        <p>Starting Player is</p>
-        <h2 className="animate-text">{currentPlayer}</h2>
+        <p>Starting Player</p>
+        <h2 className="animate-text">
+          {currentPlayer === 'playerX' ? playerX : playerO}
+        </h2>
       </Modal>
       <form>
         <PlayerInput
