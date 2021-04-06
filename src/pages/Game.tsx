@@ -23,6 +23,8 @@ const Game: React.FC = () => {
   const dispatch = useAppDispatch();
   const history = useHistory();
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+  const [modalTextSub, setModalTextSub] = useState<string>('');
+  const [modalTextMain, setModalTextMain] = useState<string>('');
 
   const openModal = (): void => {
     setIsOpen(true);
@@ -42,10 +44,10 @@ const Game: React.FC = () => {
       animateText(animatedText, 50);
     }
 
-    setTimeout(() => {
-      closeModal();
-      history.push('./scores');
-    }, 3000);
+    // setTimeout(() => {
+    //   closeModal();
+    //   history.push('./scores');
+    // }, 3000);
   };
 
   const onTileClickHandler = (e: MouseEvent<HTMLButtonElement>): void => {
@@ -72,6 +74,8 @@ const Game: React.FC = () => {
           if (button.id === board[i][j].id) {
             if (checkGameStatus(board, i, j, currentSign, winnigCondition)) {
               openModal();
+              setModalTextSub(`The WINNER is`);
+              setModalTextMain(currentPlayer === 'playerX' ? playerX : playerO);
               const winner =
                 currentPlayer === 'playerX'
                   ? {
@@ -93,19 +97,9 @@ const Game: React.FC = () => {
     }
     if (stepsX + stepsO === gameSize ** 2) {
       openModal();
-      // TODO text for modal!!!
-      setGameEnd([
-        {
-          name: playerX,
-          steps: stepsX,
-          wins: 0,
-        },
-        {
-          name: playerO,
-          steps: stepsO,
-          wins: 0,
-        },
-      ]);
+      setModalTextSub(`It is a`);
+      setModalTextMain(`TIE`);
+      setGameEnd([]);
       return;
     }
 
@@ -121,10 +115,8 @@ const Game: React.FC = () => {
         overlayClassName="overlay"
         contentLabel="Starting Player"
       >
-        <p>The WINNER is</p>
-        <h2 className="animate-text">
-          {currentPlayer === 'playerX' ? playerX : playerO}
-        </h2>
+        <p>{modalTextSub}</p>
+        <h2 className="animate-text">{modalTextMain}</h2>
       </Modal>
       <section>
         <PlayerInfo

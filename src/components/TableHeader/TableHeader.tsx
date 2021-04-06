@@ -9,9 +9,11 @@ interface Props {
 const TableHeader: React.FC<Props> = ({ scoreType }) => {
   return (
     <thead>
-      <th>Rank</th>
-      <th>Name</th>
-      <th>{`No#${scoreType}`}</th>
+      <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>{`No#${scoreType}`}</th>
+      </tr>
     </thead>
   );
 };

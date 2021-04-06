@@ -42,16 +42,16 @@ const checkGameStatus = (
   }
 
   // check for diagonal
-  const valuesMinD: number[] = [winningCondition - 1, x, y];
-  const valuesMaxD: number[] = [
+  const startValuesD: number[] = [winningCondition - 1, x, y];
+  const endValuesD: number[] = [
     winningCondition,
     board.length - x,
     board.length - y,
   ];
-  const minDifferenceD: number = Math.min(...valuesMinD);
-  const maxDifferenceD: number = Math.min(...valuesMaxD);
-  for (let i = x - minDifferenceD; i < x + maxDifferenceD; ) {
-    for (let j = y - minDifferenceD; j < y + maxDifferenceD; ) {
+  const startDiffD: number = Math.min(...startValuesD);
+  const endDiffD: number = Math.min(...endValuesD);
+  for (let i = x - startDiffD; i < x + endDiffD; ) {
+    for (let j = y - startDiffD; j < y + endDiffD; ) {
       if (board[i][j].value === sign || (i === x && j === y)) {
         signCount += 1;
         if (signCount === winningCondition) {
@@ -66,12 +66,20 @@ const checkGameStatus = (
   }
   // not working properly; doesn't go to minus direction
   // check for reverse-diagonal
-  const valuesMinRD: number[] = [winningCondition - 1, x, board.length - y - 1];
-  const valuesMaxRD: number[] = [winningCondition - 1, board.length - x - 1, y];
-  const minDifferenceRD: number = Math.min(...valuesMinRD);
-  const maxDifferenceRD: number = Math.min(...valuesMaxRD);
-  for (let i = x - minDifferenceRD; i < x - maxDifferenceRD; ) {
-    for (let j = y + minDifferenceRD; j >= y - maxDifferenceRD; ) {
+  const startValuesXRD: number[] = [
+    winningCondition - 1,
+    x,
+    board.length - y - 1,
+  ];
+  const endValuesXRD: number[] = [winningCondition, board.length - x - 1, y];
+
+  const startDiffRD: number = Math.min(...startValuesXRD);
+  const endDiffRD: number = Math.min(...endValuesXRD);
+
+  for (let i = x - startDiffRD; i <= x + endDiffRD; ) {
+    for (let j = y + startDiffRD; j >= y - endDiffRD; ) {
+      console.log([i, j]);
+
       if (board[i][j].value === sign || (i === x && j === y)) {
         signCount += 1;
         if (signCount === winningCondition) {

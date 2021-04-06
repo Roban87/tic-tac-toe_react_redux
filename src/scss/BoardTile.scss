@@ -1,9 +1,17 @@
 @use 'config';
 @each $size in config.$sizes {
   .tile-sizes-#{$size} {
-    width: calc(40vw/#{$size});
-    height: calc(40vw/#{$size});
-    font-size: calc(40vw/#{$size} * .8);
+    width: calc(60vh/#{$size});
+    height: calc(60vh/#{$size});
+    font-size: calc(60vh/#{$size} * .8);
+  }
+
+  @include config.mobile {
+    .tile-sizes-#{$size} {
+      width: calc(75vw/#{$size});
+      height: calc(75vw/#{$size});
+      font-size: calc(75vw/#{$size} * .8);
+    }
   }
 } 
 

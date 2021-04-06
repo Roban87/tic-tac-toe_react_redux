@@ -1,45 +1,94 @@
 .tile-sizes-3 {
-  width: calc(40vw/3);
-  height: calc(40vw/3);
-  font-size: calc(40vw/3 * .8);
+  width: calc(60vh/3);
+  height: calc(60vh/3);
+  font-size: calc(60vh/3 * .8);
 }
 
+@media (max-width: 576px) {
+  .tile-sizes-3 {
+    width: calc(75vw/3);
+    height: calc(75vw/3);
+    font-size: calc(75vw/3 * .8);
+  }
+}
 .tile-sizes-4 {
-  width: calc(40vw/4);
-  height: calc(40vw/4);
-  font-size: calc(40vw/4 * .8);
+  width: calc(60vh/4);
+  height: calc(60vh/4);
+  font-size: calc(60vh/4 * .8);
 }
 
+@media (max-width: 576px) {
+  .tile-sizes-4 {
+    width: calc(75vw/4);
+    height: calc(75vw/4);
+    font-size: calc(75vw/4 * .8);
+  }
+}
 .tile-sizes-5 {
-  width: calc(40vw/5);
-  height: calc(40vw/5);
-  font-size: calc(40vw/5 * .8);
+  width: calc(60vh/5);
+  height: calc(60vh/5);
+  font-size: calc(60vh/5 * .8);
 }
 
+@media (max-width: 576px) {
+  .tile-sizes-5 {
+    width: calc(75vw/5);
+    height: calc(75vw/5);
+    font-size: calc(75vw/5 * .8);
+  }
+}
 .tile-sizes-6 {
-  width: calc(40vw/6);
-  height: calc(40vw/6);
-  font-size: calc(40vw/6 * .8);
+  width: calc(60vh/6);
+  height: calc(60vh/6);
+  font-size: calc(60vh/6 * .8);
 }
 
+@media (max-width: 576px) {
+  .tile-sizes-6 {
+    width: calc(75vw/6);
+    height: calc(75vw/6);
+    font-size: calc(75vw/6 * .8);
+  }
+}
 .tile-sizes-7 {
-  width: calc(40vw/7);
-  height: calc(40vw/7);
-  font-size: calc(40vw/7 * .8);
+  width: calc(60vh/7);
+  height: calc(60vh/7);
+  font-size: calc(60vh/7 * .8);
 }
 
+@media (max-width: 576px) {
+  .tile-sizes-7 {
+    width: calc(75vw/7);
+    height: calc(75vw/7);
+    font-size: calc(75vw/7 * .8);
+  }
+}
 .tile-sizes-8 {
-  width: calc(40vw/8);
-  height: calc(40vw/8);
-  font-size: calc(40vw/8 * .8);
+  width: calc(60vh/8);
+  height: calc(60vh/8);
+  font-size: calc(60vh/8 * .8);
 }
 
+@media (max-width: 576px) {
+  .tile-sizes-8 {
+    width: calc(75vw/8);
+    height: calc(75vw/8);
+    font-size: calc(75vw/8 * .8);
+  }
+}
 .tile-sizes-9 {
-  width: calc(40vw/9);
-  height: calc(40vw/9);
-  font-size: calc(40vw/9 * .8);
+  width: calc(60vh/9);
+  height: calc(60vh/9);
+  font-size: calc(60vh/9 * .8);
 }
 
+@media (max-width: 576px) {
+  .tile-sizes-9 {
+    width: calc(75vw/9);
+    height: calc(75vw/9);
+    font-size: calc(75vw/9 * .8);
+  }
+}
 .game-btn {
   background-color: #F2F2F2;
   border: 1px solid #cfcfcf;
