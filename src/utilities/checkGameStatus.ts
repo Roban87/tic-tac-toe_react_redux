@@ -28,6 +28,7 @@ const checkGameStatus = (
       signCount = 0;
     }
   }
+  signCount = 0;
 
   // chekc for column
   for (let i = xMin; i < xMax; i += 1) {
@@ -40,6 +41,7 @@ const checkGameStatus = (
       signCount = 0;
     }
   }
+  signCount = 0;
 
   // check for diagonal
   const startValuesD: number[] = [winningCondition - 1, x, y];
@@ -64,6 +66,7 @@ const checkGameStatus = (
       j += 1;
     }
   }
+  signCount = 0;
 
   // check for reverse-diagonal
   const startValuesXRD: number[] = [
