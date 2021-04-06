@@ -64,7 +64,7 @@ const checkGameStatus = (
       j += 1;
     }
   }
-  // not working properly; doesn't go to minus direction
+
   // check for reverse-diagonal
   const startValuesXRD: number[] = [
     winningCondition - 1,
@@ -78,8 +78,6 @@ const checkGameStatus = (
 
   for (let i = x - startDiffRD; i <= x + endDiffRD; ) {
     for (let j = y + startDiffRD; j >= y - endDiffRD; ) {
-      console.log([i, j]);
-
       if (board[i][j].value === sign || (i === x && j === y)) {
         signCount += 1;
         if (signCount === winningCondition) {

@@ -44,10 +44,10 @@ const Game: React.FC = () => {
       animateText(animatedText, 50);
     }
 
-    // setTimeout(() => {
-    //   closeModal();
-    //   history.push('./scores');
-    // }, 3000);
+    setTimeout(() => {
+      closeModal();
+      history.push('./scores');
+    }, 3000);
   };
 
   const onTileClickHandler = (e: MouseEvent<HTMLButtonElement>): void => {
@@ -133,8 +133,8 @@ const Game: React.FC = () => {
         />
       </section>
       <section className="game-board">
-        {board.map(row => (
-          <div className="row">
+        {board.map((row, index) => (
+          <div className="row" key={index.toString()}>
             {row.map(tile => {
               return (
                 <BoardTile

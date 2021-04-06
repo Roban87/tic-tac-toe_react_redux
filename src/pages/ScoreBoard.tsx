@@ -26,6 +26,7 @@ const ScoreBoard: React.FC = () => {
                     name={item.name}
                     rank={index + 1}
                     score={item.wins}
+                    key={index.toString()}
                   />
                 );
               })}
@@ -42,6 +43,7 @@ const ScoreBoard: React.FC = () => {
                     name={item.name}
                     rank={index + 1}
                     score={item.steps}
+                    key={index.toString()}
                   />
                 );
               })}
